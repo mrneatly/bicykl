@@ -3,11 +3,16 @@
     "description": "A micro PHP framework",
     "type": "library",
     "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "authors": [
         {
             "name": "Pavel Borunov",
             "email": "8665691+mrneatly@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+        "spatie/ignition": "^1.15",
+        "league/container": "^4.2"
+    }
 }
