@@ -1,0 +1,13 @@
+{
+    "name": "mrneatly/bicykl",
+    "description": "A micro PHP framework",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pavel Borunov",
+            "email": "8665691+mrneatly@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
