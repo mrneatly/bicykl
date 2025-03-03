@@ -21,6 +21,7 @@ class IgnitionServiceProvider extends AbstractServiceProvider implements Bootabl
 
     public function provides(string $id): false
     {
+        // "false" because we don't register any sub-dependencies in the register() method
         return false;
     }
 }
