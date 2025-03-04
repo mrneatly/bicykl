@@ -7,6 +7,8 @@ use League\Container\ServiceProvider\AbstractServiceProvider;
 
 class ConfigServiceProvider extends AbstractServiceProvider
 {
+    private string $defaultConfigPath = __DIR__ . '/../../config/';
+
     public function __construct(
         protected string $configPath
     )
@@ -16,7 +18,9 @@ class ConfigServiceProvider extends AbstractServiceProvider
     public function register(): void
     {
         $this->getContainer()->add(Config::class, function () {
-            return $this->loadConfigFilesIntoInstance(new Config());
+            return $this->loadConfigFilesIntoInstance(
+                new Config($this->getDefaultConfigArray())
+            );
         });
     }
 
@@ -37,5 +41,12 @@ class ConfigServiceProvider extends AbstractServiceProvider
         }
 
         return $config;
+    }
+
+    private function getDefaultConfigArray(): array
+    {
+        return [
+            'app' => require $this->defaultConfigPath . 'app.php'
+        ];
     }
 }
