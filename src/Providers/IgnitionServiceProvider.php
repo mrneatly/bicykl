@@ -2,6 +2,7 @@
 
 namespace Bicykl\Providers;
 
+use Bicykl\Config;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
 use Spatie\Ignition\Ignition;
@@ -10,8 +11,9 @@ class IgnitionServiceProvider extends AbstractServiceProvider implements Bootabl
 {
     public function boot(): void
     {
-        // @todo only do that when debug mode is enabled
-        Ignition::make()->register();
+        if ($this->getContainer()->get(Config::class)->get('app.debug')) {
+            Ignition::make()->register();
+        }
     }
 
     public function register(): void
