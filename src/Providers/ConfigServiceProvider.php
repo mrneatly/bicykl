@@ -21,7 +21,8 @@ class ConfigServiceProvider extends AbstractServiceProvider
             return $this->loadConfigFilesIntoInstance(
                 new Config($this->getDefaultConfigArray())
             );
-        });
+        })
+            ->setShared();
     }
 
     // NB: this method has to be in sync with self::register()
