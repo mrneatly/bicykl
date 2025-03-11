@@ -12,7 +12,7 @@ class HttpStrategy extends AbstractAppStrategy
     public function __construct(
         protected string $envFilePath,
         protected string $configFolderPath,
-        protected StrategyInterface $routerStrategy,
+        protected ?StrategyInterface $routerStrategy = null,
     )
     {
     }
@@ -25,7 +25,7 @@ class HttpStrategy extends AbstractAppStrategy
         $this->getContainer()
             ->addServiceProvider(new IgnitionServiceProvider())
             ->addServiceProvider(new RequestServiceProvider())
-            ->addServiceProvider(new RouterServiceProvider());
+            ->addServiceProvider(new RouterServiceProvider($this->routerStrategy));
 
         return $this;
     }
