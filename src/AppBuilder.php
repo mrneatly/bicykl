@@ -1,13 +1,13 @@
 <?php
 
-namespace Bicykl\Strategies;
+namespace Bicykl;
 
 use Bicykl\Providers\ConfigServiceProvider;
 use Dotenv\Dotenv;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
 
-abstract class AbstractAppStrategy implements AppStrategy
+class AppBuilder
 {
     protected Dotenv $dotenv;
 
@@ -23,6 +23,14 @@ abstract class AbstractAppStrategy implements AppStrategy
         return $this->dotenv;
     }
 
+    public function initDotenv(string $envFilePath): static
+    {
+        $this->dotenv = Dotenv::createImmutable($envFilePath);
+        $this->dotenv->load();
+
+        return $this;
+    }
+
     public function initContainer(): static
     {
         $this->container = \Bicykl\Container::getInstance();
@@ -33,15 +41,7 @@ abstract class AbstractAppStrategy implements AppStrategy
         return $this;
     }
 
-    protected function initDotenv(string $envFilePath): static
-    {
-        $this->dotenv = Dotenv::createImmutable($envFilePath);
-        $this->dotenv->load();
-
-        return $this;
-    }
-
-    protected function initConfig(string $configPath): static
+    public function initConfig(string $configPath): static
     {
         $this->container->addServiceProvider(
             new ConfigServiceProvider($configPath)
