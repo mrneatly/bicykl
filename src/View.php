@@ -11,4 +11,13 @@ class View
     )
     {
     }
+
+    public function render(string $view, array $data = []): string
+    {
+        if (!str_ends_with($view, '.twig')) {
+            $view .= '.twig';
+        }
+
+        return $this->twig->render($view, $data);
+    }
 }
