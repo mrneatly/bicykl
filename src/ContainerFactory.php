@@ -11,7 +11,7 @@ class ContainerFactory
     {
         $bootstrap = $strategy
             ->initContainer() // setting up a container
-            ->boot(); // booting the app (registering all required service providers)
+            ->build(); // booting the app (registering all required service providers)
 
         return $bootstrap->getContainer(); // returning updated dependency container
     }

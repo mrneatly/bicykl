@@ -17,7 +17,7 @@ class HttpStrategy extends AbstractAppStrategy
     {
     }
 
-    public function boot(): static
+    public function build(): static
     {
         $this->initDotenv($this->envFilePath);
         $this->initConfig($this->configFolderPath);
