@@ -19,14 +19,12 @@
         "league/route": "^6.2",
         "laminas/laminas-httphandlerrunner": "^2.11",
         "twig/twig": "^3.0",
-        "illuminate/database": "^12.2"
+        "illuminate/database": "^12.2",
+        "spatie/ignition": "^1.15"
     },
     "autoload": {
         "psr-4": {
             "Bicykl\\": "src/"
         }
-    },
-    "require-dev": {
-        "spatie/ignition": "^1.15"
     }
 }
