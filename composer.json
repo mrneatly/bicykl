@@ -22,14 +22,12 @@
         "illuminate/database": "^12.2",
         "illuminate/events": "^12.2",
         "symfony/http-foundation": "^7.2",
-        "cartalyst/sentinel": "^9.0"
+        "cartalyst/sentinel": "^9.0",
+        "spatie/ignition": "^1.15"
     },
     "autoload": {
         "psr-4": {
             "Bicykl\\": "src/"
         }
-    },
-    "require-dev": {
-        "spatie/ignition": "^1.15"
     }
 }
