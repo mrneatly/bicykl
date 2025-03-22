@@ -7,6 +7,7 @@ use Cartalyst\Sentinel\Native\SentinelBootstrapper;
 use Cartalyst\Sentinel\Sentinel;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
+use Cartalyst\Sentinel\Native\Facades\Sentinel as SentinelFacade;
 
 class SentinelServiceProvider extends AbstractServiceProvider implements BootableServiceProviderInterface
 {
@@ -18,7 +19,8 @@ class SentinelServiceProvider extends AbstractServiceProvider implements Bootabl
             $this->getContainer()->get(Config::class)->get('auth')
         );
 
-        $sentinel = \Cartalyst\Sentinel\Native\Facades\Sentinel::instance($bootstrapper);
+        /** @var SentinelFacade $sentinel */
+        $sentinel = SentinelFacade::instance($bootstrapper);
 
         $this->sentinel = $sentinel->getSentinel();
     }
