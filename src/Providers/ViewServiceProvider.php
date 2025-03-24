@@ -4,6 +4,7 @@ namespace Bicykl\Providers;
 
 use Bicykl\Config;
 use Bicykl\View;
+use Bicykl\Views\TwigRuntimeLoader;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
 use Twig\Environment;
@@ -30,6 +31,8 @@ class ViewServiceProvider extends AbstractServiceProvider implements BootableSer
             'cache' => false,
             'debug' => $debugMode,
         ]);
+
+        $this->twig->addRuntimeLoader(new TwigRuntimeLoader($this->getContainer()));
 
         if ($debugMode) {
             $this->twig->addExtension(new DebugExtension());
